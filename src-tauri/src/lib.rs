@@ -129,8 +129,7 @@ async fn process_and_save_svg(
 
 fn apply_cricut_fix(svg: &str) -> String {
     let mut fixed = svg.replace("standalone=\"no\"", "");
-    fixed = fixed.replace("<path ", "<path fill=\"#000000\" ");
-    // Also strip any paths that were mistakenly filled with white if vtracer outputs them
+    // Strip any paths that were mistakenly filled with white if vtracer outputs them
     fixed = fixed.replace("fill=\"#ffffff\"", "fill=\"none\"");
     fixed = fixed.replace("fill=\"#FFFFFF\"", "fill=\"none\"");
     fixed
